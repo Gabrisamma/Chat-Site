@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
+    <div>
+        <form action="/" method="POST">
+            <div class="friend-form">
+                <input name="friend" placeholder="Search User" type="text">
+            </div>
+        </form>
+
+        <table class="table chat-table">
+          <tbody>
+                {% for row in friends %}
+                    <tr class="clickable-row" data-href="/chat">
+                        <td>{{ row[0] }}</td>
+                        <td width="70%">Text</td>
+                    </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+{% endblock %}

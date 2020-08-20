@@ -1,0 +1,53 @@
+.friend-form
+{
+    position: relative; 
+
+    float: right;
+
+    padding-bottom: 1%;
+}
+
+.chat-table
+{
+    background-color: #e0fbf3;
+
+    text-align: left;
+}
+
+.chat
+{
+    background-color: white;
+    
+    border: 2px solid #ccc; 
+    border-radius: 15px; 
+    
+    position: absolute; 
+    height: 70%; 
+    width: 70%;
+}
+
+body
+{
+    height: 100%;
+
+    background-color: #c0fbe9;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{      
+
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}

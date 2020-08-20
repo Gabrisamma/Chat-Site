@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+    <div class="chat">
+        <form action="/chat" method="POST">
+            <div style="position: absolute; top: 88%; width: 90%; margin: 1%;">
+                <input style="width: 100%" name="message" placeholder="Type a message">
+            </div>
+            <button type="submit" style="position: absolute; top: 90%; right: 2%;">Send</button>
+        </form>
+    </div>
+{% endblock %}

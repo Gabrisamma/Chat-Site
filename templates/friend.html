@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Friend
+{% endblock %}
+
+{% block main %} 
+    <div style="float: left; width: 60%; margin: auto;">
+        <form action="/add-friend" method="POST">
+            <!-- Hidden text to recognize which form was clicked -->
+            <input type="hidden" name="form" value="form1">
+
+            <div class="form-group">
+                <input class="form-control" name="search" placeholder="Search User">
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <th style="width: 70%">Username</th>
+                <th></th>
+            </thead>
+            <tbody class="table-bordered">
+                {% for row in users %}
+                    <tr>
+                        <td style="vertical-align: middle;">{{ row[1] }}</td>
+                        <form action="/add-friend" method="POST">
+                            <!-- Hidden text to recognize which form was clicked -->
+                            <input type="hidden" name="form" value="form2">
+                            
+                            {% if statuses[loop.index - 1][2] != 1 %}
+                                <td><button value={{row[0]}} name="button" type="submit" style="font-size: 13px;">Add Friend</button></td>
+                            {% else %}
+                                <td><button style="font-size: 13px;" disabled>Already Friend</button></td>
+                            {% endif %}
+                        </form> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="position: absolute; right: 5%; width: 30%">
+        <h3 style="text-align: center;">Received</h3>
+        <form action="/add-friend" method="POST">
+            <!-- Hidden text to recognize which form was clicked -->
+            <input type="hidden" name="form" value="form3">
+            
+            <table class="table">
+                <tbody class="table-bordered">
+                    {% for row in received %}
+                        <tr>
+                            <td style="vertical-align: middle; width: 70%;">{{ row[1] }}</td>
+                            <form action="/add-friend" method="POST">
+                                <!-- Hidden text to recognize which form was clicked -->
+                                <input type="hidden" name="form" value="form2">
+                                
+                                <td><button value={{row[0]}} name="button" type="submit" style="font-size: 13px;">Add Friend</button></td>
+                            </form> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form> 
+    </div>   
+{% endblock %}
